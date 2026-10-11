@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "policy": "zero_unapproved_overlap",
+  "canonical_governance_repo": "Amankendi/Amankendi",
+  "approved_shared_resources": [],
+  "repositories": [
+    {
+      "repository": "Amankendi/Amankendi",
+      "project_id": "alkendi-governance",
+      "role": "governance_system_of_record",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/aman-executive",
+      "project_id": "aman-office",
+      "role": "product_system_of_record",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/voicestudio",
+      "project_id": "utility-voicestudio",
+      "role": "external_utility_fork",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/paperclip",
+      "project_id": "utility-paperclip",
+      "role": "external_utility_fork",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/skills",
+      "project_id": "utility-skills",
+      "role": "external_utility_fork",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/claude-mem",
+      "project_id": "utility-claude-mem",
+      "role": "external_utility_fork",
+      "classification": "verified",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/tamkeen-app",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/ElodieBURDET.fr",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/ONO.3D",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/Ady-menuiserie",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/ono-d",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/ai-website-cloner-template",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    },
+    {
+      "repository": "Amankendi/Co",
+      "project_id": null,
+      "role": "unclassified_existing",
+      "classification": "classification_required",
+      "resources": []
+    }
+  ]
+}

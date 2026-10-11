@@ -1,0 +1,73 @@
+name: ALKENDI Work Item
+description: Durable handoff from conversation to engineering
+title: "[WORK] "
+body:
+  - type: input
+    id: work_id
+    attributes:
+      label: WORK_ID
+      placeholder: ALK-YYYYMMDD-001
+    validations:
+      required: true
+  - type: input
+    id: project_id
+    attributes:
+      label: PROJECT_ID
+      description: Use BOUNDARY_BLOCKED if not yet classified.
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: TARGET_REPOSITORY
+      placeholder: owner/repository or NEW_REPOSITORY_REQUIRED
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: CURRENT_STAGE
+      options:
+        - INTAKE
+        - BOUNDARY_CHECK
+        - STAGE_1_READY
+        - CLAUDE_REVIEW
+        - IMPLEMENTATION
+        - CHATGPT_ACCEPTANCE
+        - INTEGRATION_CHECK
+        - VERIFIED
+        - BOUNDARY_BLOCKED
+    validations:
+      required: true
+  - type: textarea
+    id: intent
+    attributes:
+      label: Owner intent
+    validations:
+      required: true
+  - type: textarea
+    id: state
+    attributes:
+      label: Verified current state
+      description: Facts only. Mark unknowns as NOT VERIFIED.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Project boundary and resources touched
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security / privacy / external connections
+      description: Identify data classes, secrets, network exposure and approvals.
+    validations:
+      required: true
