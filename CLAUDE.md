@@ -63,3 +63,9 @@ Every PR/work result must state:
 - NEXT
 
 GitHub is the durable handoff channel. Do not rely on hidden chat memory as the only source of truth.
+
+## Active owner focus — 2026-10-12
+Before taking any task, read `docs/04_FOCUS_LAB_OFFICE_2026-10-12.md` and `config/project-registry.json`.
+Only `aman-office` and `alkendi-lab` are active product workstreams. Pause other project development, agent work, recurring reviews and paid calls; preserve data and existing live-service availability until a safe pause is verified. Governance and utilities may support the two active products only.
+At intake ask and record: actual project, temporary demo, or cancelled. Unclassified work cannot execute. Demo work is on-demand, has an owner-agreed expiry and no recurring/paid activity by default. Cancelled work is archived; deletion requires exact scope and explicit authorization.
+Report pause evidence separately for each platform; GitHub instructions do not themselves stop another Claude session or runtime. A later owner authorization may reactivate the explicitly named scope.

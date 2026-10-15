@@ -9,7 +9,9 @@
       "project_id": "alkendi-governance",
       "role": "governance_system_of_record",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "governance_only"
     },
     {
       "repository": "Amankendi/Alkendi-lab-",
@@ -23,84 +25,184 @@
       "project_id": "aman-office",
       "role": "product_system_of_record",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "actual",
+      "work_state": "active"
     },
     {
       "repository": "Amankendi/voicestudio",
       "project_id": "utility-voicestudio",
       "role": "external_utility_fork",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "dependency_only",
+      "work_constraint": "Only support an explicitly assigned task for an active project; no independent agent/build/update-adoption jobs."
     },
     {
       "repository": "Amankendi/paperclip",
       "project_id": "utility-paperclip",
       "role": "external_utility_fork",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "dependency_only",
+      "work_constraint": "Only support an explicitly assigned task for an active project; no independent agent/build/update-adoption jobs."
     },
     {
       "repository": "Amankendi/skills",
       "project_id": "utility-skills",
       "role": "external_utility_fork",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "dependency_only",
+      "work_constraint": "Only support an explicitly assigned task for an active project; no independent agent/build/update-adoption jobs."
     },
     {
       "repository": "Amankendi/claude-mem",
       "project_id": "utility-claude-mem",
       "role": "external_utility_fork",
       "classification": "verified",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "dependency_only",
+      "work_constraint": "Only support an explicitly assigned task for an active project; no independent agent/build/update-adoption jobs."
     },
     {
       "repository": "Amankendi/tamkeen-app",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/ElodieBURDET.fr",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/ONO.3D",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/Ady-menuiserie",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/ono-d",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/ai-website-cloner-template",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
     },
     {
       "repository": "Amankendi/Co",
       "project_id": null,
       "role": "unclassified_existing",
       "classification": "classification_required",
-      "resources": []
+      "resources": [],
+      "project_kind": "unclassified",
+      "work_state": "paused"
+    }
+  ],
+  "focus_policy": {
+    "effective_at": "2026-10-12T02:07:16+02:00",
+    "owner_decision": "Focus only on ALKENDI Lab activation and AMAN Office UX/integration; pause all other project work.",
+    "active_project_ids": [
+      "aman-office",
+      "alkendi-lab"
+    ],
+    "default_work_state": "paused",
+    "unclassified_work_state": "intake_required",
+    "governance_scope": "Maintenance of these two active projects only; not a third product.",
+    "pause_semantics": "Stop new development, agent jobs, scheduled project work and paid calls; preserve existing data and live customer services until their safe pause boundary is verified.",
+    "runtime_enforcement": "partial: two ChatGPT automations paused; Claude sessions and external runtimes not controlled by this registry",
+    "classification_values": [
+      "actual",
+      "demo",
+      "cancelled",
+      "unclassified"
+    ],
+    "work_state_values": [
+      "active",
+      "paused",
+      "dependency_only",
+      "governance_only",
+      "intake_required",
+      "archived"
+    ]
+  },
+  "sites": [
+    {
+      "project_id": "alkendi-lab",
+      "site_id": "appgprj_6ac184cee6ac81919319adfc514e729d",
+      "url": "https://alkendi-lab-app.abd-alkendi.chatgpt.site",
+      "project_kind": "actual",
+      "work_state": "active",
+      "source_of_truth": "Existing Sites source repository; GitHub implementation mirror/ownership not verified.",
+      "resources": [
+        {
+          "type": "site",
+          "id": "appgprj_6ac184cee6ac81919319adfc514e729d"
+        }
+      ]
+    },
+    {
+      "project_id": null,
+      "site_id": "appgprj_6ac2a04e060c8191afbb7a7937b2a91d",
+      "title": "ATHAR Agent",
+      "project_kind": "unclassified",
+      "work_state": "paused"
+    },
+    {
+      "project_id": null,
+      "site_id": "appgprj_6ac184c7f29081919bdcc7d73a9d5f66",
+      "title": "NOUN App",
+      "project_kind": "unclassified",
+      "work_state": "paused",
+      "note": "Published Site still exists. No attached Site automations observed; do not conflate this with the archived NOUN backend."
+    },
+    {
+      "project_id": null,
+      "site_id": "appgprj_6aa93cfeaa348191b628d4bc92f251f6",
+      "title": "ONO3D",
+      "project_kind": "unclassified",
+      "work_state": "paused"
+    },
+    {
+      "project_id": null,
+      "site_id": "appgprj_6aa3118a55148191b49c87ba69d71260",
+      "title": "AMAN EuroTech Bridge",
+      "project_kind": "unclassified",
+      "work_state": "paused"
     }
   ]
 }
