@@ -12,6 +12,13 @@
       "resources": []
     },
     {
+      "repository": "Amankendi/Alkendi-lab-",
+      "project_id": "alkendi-lab",
+      "role": "product_system_of_record",
+      "classification": "verified",
+      "resources": []
+    },
+    {
       "repository": "Amankendi/aman-executive",
       "project_id": "aman-office",
       "role": "product_system_of_record",
