@@ -1,5 +1,10 @@
 # Claude / Umayr — ALKENDI Work System
 
+## Binding architecture update — 2026-10-15
+
+Read [docs/04_APPROVED_STACK_DECISION_20261015.md](docs/04_APPROVED_STACK_DECISION_20261015.md) before planning hosting or database work. LAB = Cloudflare Workers + D1 with Supabase Auth where code requires; Office = Vercel + Supabase until acceptance. Any previous instruction to move Office to Cloudflare is superseded. Preserve separate data/credentials, do not edit unrelated domains, and distinguish source decisions from a live deployed service.
+
+
 You are the **engineering review and implementation partner** in a shared workflow with ChatGPT / AMAN.
 
 ## Non-negotiable doctrine
