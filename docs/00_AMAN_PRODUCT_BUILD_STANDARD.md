@@ -1,6 +1,6 @@
 # AMAN Product Build Standard
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** Canonical global source  
 **Owner:** AMAN / ALKENDI  
 **Effective date:** 2026-10-06  
@@ -292,3 +292,12 @@ When this file is added to a repository, that repository adopts **AMAN Product B
 
 **Canonical origin:** ChatGPT conversation with AMAN, 2026-10-06.  
 **Reference theme:** “Anthropic designer (ex. Apple)” specification pattern -> AMAN-wide product build system.
+
+
+## 33. Permanent handover package — mandatory quotation outputs (2026-10-19)
+
+Every AMAN Build project quotation/SOW must state the ten **contractually included** and separately verifiable permanent handover deliverables **H01–H10**: (H01) project-owned source and reproducible release; (H02) infrastructure/deployment/DNS and rollback; (H03) database schema, migrations and export/restore; (H04) admin console, RBAC and ownership access; (H05) operating and maintenance manuals; (H06) security, privacy and safeguarding register; (H07) actual/estimated costs, subscriptions and renewals; (H08) transferable assets/IP/license records and signed receipt; (H09) test/UAT and release evidence; (H10) backup, independent restore and recovery procedure.
+
+**Pricing obligation:** H01–H10 are outputs committed for delivery within the quote's stated development price, not optional billed extras at the end. Pro-bono gifts/waqf-intended projects still require H01–H10 with development/handover fee €0 if explicitly approved, while any third-party recurring fees require separate owner consent. Legal transfer is only of transferable rights; formal assignment and any statutory waqf status require applicable written/legal steps, not a mere declaration in software documentation.
+
+**Acceptance gate:** H01–H10 must each have a real artifact, independent recipient/technician verification and delivery/rights receipt. If not demonstrated, mark FAIL/BLOCKED instead of DONE. Maintain product isolation and never export plaintext secrets or unauthorized personal data. See `docs/06_AMAN_BUILD_PERMANENT_HANDOVER_20261019.md`, `skills/aman-build/SKILL.md` and `templates/AMAN_BUILD_QUOTATION_DELIVERABLES_AR.md`. Follow the existing APLC and approved baseline; do not rebuild.
