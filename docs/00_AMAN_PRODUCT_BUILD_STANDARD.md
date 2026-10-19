@@ -288,7 +288,7 @@ When documentation and implementation disagree, verify the real system, record t
 
 ## Repository adoption record
 
-When this file is added to a repository, that repository adopts **AMAN Product Build Standard v1.0** until superseded by a newer version.
+When this file is added to a repository, that repository adopts **AMAN Product Build Standard v1.1** until superseded by a newer version.
 
 **Canonical origin:** ChatGPT conversation with AMAN, 2026-10-06.  
 **Reference theme:** “Anthropic designer (ex. Apple)” specification pattern -> AMAN-wide product build system.
