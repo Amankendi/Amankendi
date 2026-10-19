@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "work_id": "ALKENDI-AGENT-TOOLKIT-20261019",
+  "owner": "ALKENDI LAB / AMAN",
+  "decision_date": "2026-10-19",
+  "classification": "shared_reusable_reference_no_runtime",
+  "status": "owner_approved_reference_only",
+  "canonical_build_standard": "docs/00_AMAN_PRODUCT_BUILD_STANDARD.md",
+  "architecture_decision": "docs/04_APPROVED_STACK_DECISION_20261015.md",
+  "sources": [
+    {
+      "repository": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "role": "Primary development practice reference",
+      "upstream_license": "MIT",
+      "access": "read-only"
+    },
+    {
+      "repository": "wshobson/agents",
+      "url": "https://github.com/wshobson/agents",
+      "role": "Specialized operations reference",
+      "upstream_license": "MIT",
+      "access": "read-only"
+    },
+    {
+      "repository": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "role": "Commercial/team role patterns reference",
+      "upstream_license": "MIT",
+      "access": "read-only"
+    },
+    {
+      "repository": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "role": "Knowledge-work role and integration patterns only; Claude specific",
+      "upstream_license": "Apache-2.0 (repository root; individual subfolders review needed)",
+      "access": "read-only"
+    },
+    {
+      "repository": "anthropics/claude-quickstarts",
+      "url": "https://github.com/anthropics/claude-quickstarts",
+      "role": "Educational examples only; Claude API coupling",
+      "upstream_license": "MIT",
+      "access": "read-only"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "AT-01",
+      "domain": "requirements",
+      "title": "Specification discipline",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/spec-driven-development/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Unspecified new capability or meaningful requirements ambiguity",
+      "acceptance": "Mapped to existing PROJECT_MASTER_SPEC without replacing approved baseline"
+    },
+    {
+      "id": "AT-02",
+      "domain": "implementation",
+      "title": "Incremental implementation",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/incremental-implementation/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Approved multi-file implementation",
+      "acceptance": "Small independently tested change set; no simultaneous competing implementers"
+    },
+    {
+      "id": "AT-03",
+      "domain": "testing",
+      "title": "Test-driven development",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/test-driven-development/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Code behavior change or bug fix",
+      "acceptance": "Reproducing failing test followed by passing test evidence"
+    },
+    {
+      "id": "AT-04",
+      "domain": "browser",
+      "title": "Browser runtime verification",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/browser-testing-with-devtools/SKILL.md",
+      "status": "reference_only",
+      "trigger": "UI and browser behavior modified",
+      "acceptance": "Real-browser evidence with approved browser tooling; no unreviewed MCP auto-install"
+    },
+    {
+      "id": "AT-05",
+      "domain": "security",
+      "title": "Security and hardening",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/security-and-hardening/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Identity, payments, user data or integrations",
+      "acceptance": "Threat boundary and authorization checks; no secret exposure"
+    },
+    {
+      "id": "AT-06",
+      "domain": "delivery",
+      "title": "CI/CD verification",
+      "source_repo": "addyosmani/agent-skills",
+      "source_path": "skills/ci-cd-and-automation/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Release gate and pipeline changes",
+      "acceptance": "PR checks and rollback plan, without enabling deploy"
+    },
+    {
+      "id": "AT-07",
+      "domain": "operations",
+      "title": "Service level objectives",
+      "source_repo": "wshobson/agents",
+      "source_path": "plugins/observability-monitoring/skills/slo-implementation/SKILL.md",
+      "status": "reference_only",
+      "trigger": "Post-launch operational improvement",
+      "acceptance": "Metrics and failure thresholds defined without logging private content"
+    },
+    {
+      "id": "AT-08",
+      "domain": "commercial",
+      "title": "Growth experiments",
+      "source_repo": "msitarzewski/agency-agents",
+      "source_path": "marketing/marketing-growth-hacker.md",
+      "status": "reference_only",
+      "trigger": "Product pilot needs measurable user acquisition or revenue validation",
+      "acceptance": "One consent-respecting experiment with target metric and real cost accounting"
+    }
+  ],
+  "security": {
+    "auto_install": false,
+    "auto_execute_external_scripts": false,
+    "auto_merge": false,
+    "auto_deploy": false,
+    "unapproved_mcp_connections": false,
+    "store_secrets": false,
+    "require_isolated_pilot": true,
+    "require_license_review_before_copy": true
+  }
+}
