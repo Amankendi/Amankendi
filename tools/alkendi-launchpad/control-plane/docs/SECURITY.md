@@ -1,0 +1,10 @@
+# SECURITY / PRIVACY CONTRACT
+
+- **Fail-closed by default:** no public UI, API, or demo mode without verified Cloudflare Access owner JWT. Worker enforces it even if upstream Access is misconfigured.
+- **Access JWT:** RS256 signature, exact issuer, Application AUD, `exp`, optional `nbf`, verified owner email allowlist. Browser mutate endpoints require same-origin JSON requests. CSP blocks remote scripts.
+- **GitHub secrets:** `GITHUB_TOKEN` is a Worker secret. Central Actions `GH_PRIVATE_SOURCE_READ_TOKEN` + `CLOUDFLARE_API_TOKEN` are not ever stored in customer repositories. Token privileges must be reviewed; no logs or exports should contain secrets.
+- **No customer data mixing:** one repository and Worker per customer; D1 holds control-plane metadata only. No shared customer DB, auth tenant or runtime secrets. No unrelated DNS modification.
+- **Approval:** project creation is explicit; separate SHA approval and dispatch. Central Actions must validate pinned SHA, manifest, repo name and Worker name before deploying. Workflow MUST use its own trusted Wrangler configuration to prevent malicious site configs reusing Cloudflare token for unrelated resources.
+- **Export:** only a constrained file count and byte budget, excludes .env, private keys, symlinks, dependency folders and common credential markers; returns ZIP with immutable commit SHA and H01–H10 checklist. Binary files and unrecognized secret formats must be inspected separately before handover. No database or legal transfer is implied.
+- **Known limitations:** single-owner, no rate limiting beyond limited GitHub and Cloudflare quotas, no GitHub credential rotation UI, no automated recovery of partially created repos, no signed full archive evidence beyond GitHub SHA, no immutable proof of actual production deployment, no static malware scanning or dependency security audit.
+- **Production blockers:** verify isolated Access route, audit owner allowlist, validate tokens and minimum scopes, add audit retention/backup policy, examine real GitHub App alternative, set protected GitHub Actions environment and run live isolation/publish/export tests.

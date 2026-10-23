@@ -1,0 +1,105 @@
+name: ALKENDI Launchpad | Approved static deployment
+on:
+  workflow_dispatch:
+    inputs:
+      target_repository:
+        description: Owner's private isolated repository
+        required: true
+        type: string
+      target_sha:
+        description: Exact reviewed source commit SHA
+        required: true
+        type: string
+      target_worker:
+        description: Isolated target Cloudflare Worker
+        required: true
+        type: string
+      kind:
+        description: Project ownership boundary
+        required: true
+        type: choice
+        options: [internal, client]
+      confirmation:
+        description: Must equal DEPLOY-PINNED
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: launchpad-${{ inputs.target_worker }}
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    if: inputs.confirmation == 'DEPLOY-PINNED'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Validate fully-qualified inputs before checkout
+        env:
+          TARGET_REPO: ${{ inputs.target_repository }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+          TARGET_WORKER: ${{ inputs.target_worker }}
+          PROJECT_KIND: ${{ inputs.kind }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, re
+          kind=os.environ['PROJECT_KIND']
+          repo=os.environ['TARGET_REPO']
+          worker=os.environ['TARGET_WORKER']
+          sha=os.environ['TARGET_SHA']
+          assert kind in ('internal','client'), 'Invalid kind'
+          prefix='alkendi-' if kind=='internal' else 'client-'
+          assert re.fullmatch(r'Amankendi/'+prefix+r'[a-z][a-z0-9-]{1,38}[a-z0-9]',repo), 'Invalid repository'
+          assert worker==repo.split('/')[-1], 'Worker must exactly match project repository name'
+          assert re.fullmatch(r'[0-9a-f]{40}',sha), 'Invalid immutable commit sha'
+          PY
+      - name: Checkout EXACT approved commit (no workflows or scripts executed)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.target_repository }}
+          ref: ${{ inputs.target_sha }}
+          token: ${{ secrets.GH_PRIVATE_SOURCE_READ_TOKEN }}
+          persist-credentials: false
+          path: target
+      - name: Validate manifest and safely copy only static public assets
+        env:
+          TARGET_REPO: ${{ inputs.target_repository }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+          TARGET_WORKER: ${{ inputs.target_worker }}
+          PROJECT_KIND: ${{ inputs.kind }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib,re,shutil,subprocess
+          root=pathlib.Path('target').resolve()
+          p=json.loads((root/'alkendi.project.json').read_text())
+          assert p.get('schema_version')==1 and p.get('owner')=='Amankendi'
+          assert p.get('repository')==os.environ['TARGET_REPO']
+          assert p.get('worker_name')==os.environ['TARGET_WORKER']
+          assert p.get('kind')==os.environ['PROJECT_KIND']
+          assert p.get('provider')=='cloudflare-workers-static'
+          sha=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
+          assert sha==os.environ['TARGET_SHA'],'SHA mismatch'
+          assets=root/'public'
+          assert assets.is_dir() and (assets/'index.html').is_file()
+          paths=list(assets.rglob('*'))
+          assert len(paths)<=500,'Too many assets'
+          assert not any(f.is_symlink() for f in paths),'Symlinks forbidden'
+          assert sum(f.stat().st_size for f in paths if f.is_file())<=25_000_000,'Assets exceed upload cap'
+          build=pathlib.Path(os.environ['RUNNER_TEMP'])/'launchpad-release'
+          build.mkdir(parents=True,exist_ok=True)
+          shutil.copytree(assets,build/'public')
+          conf={'name':p['worker_name'],'compatibility_date':'2026-10-20','workers_dev':True,'assets':{'directory':'./public'}}
+          (build/'wrangler.jsonc').write_text(json.dumps(conf))
+          print('Validated isolated static deployment:',p['worker_name'],sha)
+          PY
+      - name: Deploy verified static-only Worker (no DNS modifications)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/launchpad-release/wrangler.jsonc"

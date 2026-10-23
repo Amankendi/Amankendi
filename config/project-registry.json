@@ -2,7 +2,30 @@
   "schema_version": 1,
   "policy": "zero_unapproved_overlap",
   "canonical_governance_repo": "Amankendi/Amankendi",
-  "approved_shared_resources": [],
+  "approved_shared_resources": [
+    {
+      "id": "alkendi-launchpad-source-v0.1",
+      "owner": "alkendi-governance",
+      "purpose": "Reusable source-only project bootstrap and gated release/export tooling; not a runtime",
+      "allowed_projects": [
+        "owner-approved isolated ALKENDI or customer repositories"
+      ],
+      "access_mode": "template-source-only",
+      "data_classes_allowed": [
+        "public tooling",
+        "non-sensitive per-project template metadata"
+      ],
+      "failure_boundary": "No shared production runtime, private business records or cross-repository credentials",
+      "security_controls": [
+        "private target repositories",
+        "manual release gates",
+        "no embedded secrets",
+        "client source handoff scan",
+        "per-project hosting credentials"
+      ],
+      "version_interface_contract": "CLI v0.1, alkendi.project.json schema_version=1, H01-H10 handover policy"
+    }
+  ],
   "repositories": [
     {
       "repository": "Amankendi/Amankendi",

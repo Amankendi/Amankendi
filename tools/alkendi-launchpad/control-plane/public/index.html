@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d2430">
+  <meta name="description" content="ALKENDI Launchpad — لوحة إنشاء وإدارة وتسليم مشاريع الكندي">
+  <title>ALKENDI Launchpad — منصة إطلاق الكندي</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="التنقل الرئيسي">
+      <div class="brand"><div class="brand-mark" aria-hidden="true"><span>A</span></div><div class="brand-copy"><b>ALKENDI</b><small>LAUNCHPAD <span class="brand-dot">✦</span></small></div></div>
+      <div class="sidebar-caption">مساحة التشغيل</div>
+      <nav class="nav" id="nav" aria-label="تصفية المشاريع">
+        <button class="nav-item selected" data-filter="all"><span class="nav-glyph">▦</span><span>نظرة عامة</span></button>
+        <button class="nav-item" data-filter="internal"><span class="nav-glyph">◈</span><span>مشاريعي</span></button>
+        <button class="nav-item" data-filter="client"><span class="nav-glyph">▤</span><span>مشاريع العملاء</span></button>
+      </nav>
+      <div class="sidebar-info"><div class="sidebar-info-icon">◎</div><b>مكان واحد لكل مشاريعك</b><p>مصدر خاص لكل مشروع، اعتماد واضح قبل النشر، وتسليم مستقل للعميل.</p></div>
+      <div class="sidebar-bottom"><span class="live-dot"></span><div><strong>ALKENDI LAB</strong><small id="identity">التحقق من الاتصال…</small></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="topbar-eyebrow">مساحة ALKENDI LAB <span> / </span> إدارة المشاريع</div><div class="top-actions"><span id="connection" class="connection loading"><span class="live-dot"></span>جاري الاتصال</span><button id="refreshBtn" class="icon-button" title="تحديث" aria-label="تحديث البيانات">↻</button></div></header>
+      <section class="hero" aria-labelledby="pageHeading"><div class="hero-accent"></div><div class="hero-content"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR IDEAS. YOUR OWNERSHIP.</div><h1 id="pageHeading">من الفكرة… <em>إلى الإطلاق.</em></h1><p>مساحة واحدة لبناء مواقعك ومشاريع عملائك، وإدارتها وتسليمها باستقلالية تامة.</p><button id="createMain" class="btn btn-light"><span>＋</span> مشروع جديد <span class="btn-arrow">↗</span></button></div><div class="hero-pattern" aria-hidden="true"><div class="ring ring-a"></div><div class="ring ring-b"></div><div class="ring ring-c"></div><div class="hero-monogram">A</div></div><div class="hero-index">LAUNCHPAD / 01</div></section>
+      <section class="summary" aria-label="ملخص المشاريع"><article class="metric"><div class="metric-top"><span>إجمالي المشاريع</span><span class="metric-symbol">◫</span></div><div class="metric-value" id="countAll">—</div><div class="metric-bottom">المسجلة في مساحة التشغيل</div></article><article class="metric"><div class="metric-top"><span>مشاريع الكندي</span><span class="metric-symbol">◇</span></div><div class="metric-value" id="countInternal">—</div><div class="metric-bottom">ملكيتك وإدارتك</div></article><article class="metric"><div class="metric-top"><span>مشاريع العملاء</span><span class="metric-symbol">▣</span></div><div class="metric-value" id="countClient">—</div><div class="metric-bottom">مستودعات مستقلة للتسليم</div></article><article class="metric"><div class="metric-top"><span>بانتظار الاعتماد</span><span class="metric-symbol">⌁</span></div><div class="metric-value" id="countApproval">—</div><div class="metric-bottom">مراجعة قبل أي نشر</div></article></section>
+      <section class="projects" aria-labelledby="projectsHeading"><div class="section-heading"><div><div class="section-overline">YOUR WORKSPACE</div><h2 id="projectsHeading">المشاريع <span id="filterName">/ الكل</span></h2></div><div class="section-actions"><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="ابحث عن مشروع…" aria-label="ابحث عن مشروع"></div><button id="newProjectSecondary" class="btn btn-primary">＋ إضافة مشروع</button></div></div><div id="status" class="status" role="status" aria-live="polite" hidden></div><div id="projectList" class="project-grid" aria-live="polite"><div class="skeleton"></div><div class="skeleton"></div></div></section>
+      <footer class="footer"><span>© 2026 ALKENDI LAB</span><span>Built to own, designed to grow.</span><span id="appVersion">Launchpad / Beta</span></footer>
+    </main>
+  </div>
+  <dialog id="createDialog" class="dialog"><form id="createForm" class="dialog-card"><div class="dialog-header"><div><div class="dialog-kicker">NEW PROJECT</div><h2>إطلاق مشروع جديد</h2><p>سننشئ مستودعًا خاصًا ومستقلًا داخل حساب الكندي.</p></div><button type="button" id="closeCreate" class="close-button" aria-label="إغلاق">×</button></div><div class="dialog-content"><label class="field-label" for="projectName">اسم المشروع</label><input id="projectName" name="name" class="field" maxlength="90" minlength="2" required placeholder="مثال: مركز الإبداع الرقمي"><label class="field-label" for="projectBrief">فكرتك وتصميمك (اختياري)</label><textarea id="projectBrief" name="brief" class="field field-brief" rows="3" maxlength="2400" placeholder="اكتب شكل الموقع، الجمهور، الألوان، والأقسام التي تتخيلها…"></textarea><label class="field-label" for="projectSlug">المعرّف التقني بالإنجليزية</label><input id="projectSlug" name="slug" class="field ltr" required maxlength="40" pattern="[a-z][a-z0-9-]{1,38}[a-z0-9]" placeholder="digital-center" autocapitalize="off" spellcheck="false"><div class="helper">يصبح جزءًا من اسم المستودع ولا يمكن تكراره.</div><div class="field-label">ملكية المشروع</div><div class="choice-grid"><label class="choice"><input type="radio" name="kind" value="internal" checked><span class="choice-icon">◇</span><b>مشروعي</b><small>بإدارة الكندي</small></label><label class="choice"><input type="radio" name="kind" value="client"><span class="choice-icon">▣</span><b>مشروع عميل</b><small>جاهز للتصدير والتسليم</small></label></div><div class="preview-repo">المستودع المتوقع <code dir="ltr" id="repoPreview">Amankendi/alkendi-digital-center</code><span>خاص 🔒</span></div></div><div class="dialog-footer"><button type="button" id="cancelCreate" class="btn btn-quiet">إلغاء</button><button type="submit" id="submitCreate" class="btn btn-primary">إنشاء مستودع خاص <span>↗</span></button></div></form></dialog>
+  <dialog id="confirmDialog" class="dialog"><div class="dialog-card confirm-card"><div class="dialog-header"><div><div class="dialog-kicker" id="confirmKicker">CONFIRM ACTION</div><h2 id="confirmTitle">تأكيد العملية</h2><p id="confirmDescription"></p></div><button id="closeConfirm" class="close-button" aria-label="إغلاق">×</button></div><div class="dialog-footer"><button id="cancelConfirm" class="btn btn-quiet">إلغاء</button><button id="acceptConfirm" class="btn btn-primary">تأكيد</button></div></div></dialog>
+  <dialog id="detailDialog" class="dialog detail-dialog"><div class="dialog-card"><div class="dialog-header"><div><div class="dialog-kicker">PROJECT DETAILS</div><h2 id="detailTitle">تفاصيل المشروع</h2><p id="detailSubtitle"></p></div><button id="closeDetail" class="close-button" aria-label="إغلاق">×</button></div><div id="detailBody" class="detail-body"></div><div id="auditLog" class="audit-log"></div><div id="detailActions" class="dialog-footer detail-footer"></div></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

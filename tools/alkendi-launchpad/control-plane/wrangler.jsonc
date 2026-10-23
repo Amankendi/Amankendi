@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alkendi-launchpad-control",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-20",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "alkendi-launchpad-control",
+      "database_id": "REPLACE_WITH_NEW_ISOLATED_D1_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "GH_OWNER": "Amankendi",
+    "CF_ACCESS_TEAM_DOMAIN": "REPLACE_WITH_YOUR_TEAM.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "REPLACE_WITH_ACCESS_APPLICATION_AUD",
+    "OWNER_EMAILS": "REPLACE_WITH_OWNER_EMAIL",
+    "CLOUDFLARE_DEPLOY_PROVIDER": "cloudflare-workers-static"
+  }
+}
