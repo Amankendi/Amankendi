@@ -55,7 +55,7 @@ jobs:
           assert re.fullmatch(r'[0-9a-f]{40}',sha), 'Invalid immutable commit sha'
           PY
       - name: Checkout EXACT approved commit (no workflows or scripts executed)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ inputs.target_repository }}
           ref: ${{ inputs.target_sha }}
